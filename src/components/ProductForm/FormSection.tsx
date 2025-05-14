@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 interface FormSectionProps {
@@ -25,7 +26,7 @@ const FormSection: React.FC<FormSectionProps> = ({
   helpLink
 }) => {
   return <div className={cn("border rounded-lg bg-white shadow-sm mb-6 overflow-hidden", className)}>
-      <div className="flex justify-between items-center border-b px-6 py-4 bg-gradient-to-r from-verdent-50 to-verdent-100">
+      <div className="flex justify-between items-center border-b px-6 py-4 bg-white">
         <div className="flex items-center">
           {required && <span className="text-red-500 mr-1">*</span>}
           <h3 className="text-lg font-medium bg-gradient-to-r from-blue-600 to-verdent-600 bg-clip-text text-transparent">{title}</h3>
