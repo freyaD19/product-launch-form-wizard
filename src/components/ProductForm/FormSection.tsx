@@ -28,26 +28,26 @@ const FormSection: React.FC<FormSectionProps> = ({
   helpLink,
 }) => {
   return (
-    <div className={cn("border rounded-lg bg-white shadow-sm mb-6", className)}>
-      <div className="flex justify-between items-center border-b px-6 py-4">
+    <div className={cn("border rounded-lg bg-white shadow-sm mb-6 overflow-hidden", className)}>
+      <div className="flex justify-between items-center border-b px-6 py-4 bg-gradient-to-r from-verdent-50 to-verdent-100">
         <div className="flex items-center">
           {required && <span className="text-red-500 mr-1">*</span>}
-          <h3 className="text-lg font-medium">{title}</h3>
-          {description && <p className="text-gray-500 text-sm ml-3">{description}</p>}
+          <h3 className="text-lg font-medium text-verdent-800">{title}</h3>
+          {description && <p className="text-verdent-600 text-sm ml-3">{description}</p>}
         </div>
         <div className="flex items-center space-x-3">
           {completion && (
             <div className="flex items-center text-sm">
               <span>{completion.filled}/{completion.total}</span>
               {completion.percentText && (
-                <span className="ml-2 text-red-500">{completion.percentText}</span>
+                <span className="ml-2 text-verdent-600">{completion.percentText}</span>
               )}
             </div>
           )}
           {helpText && (
             <div className="text-sm text-gray-500">
               {helpLink ? (
-                <a href={helpLink} className="text-blue-500 hover:text-blue-600">
+                <a href={helpLink} className="text-verdent-500 hover:text-verdent-600">
                   {helpText}
                 </a>
               ) : (

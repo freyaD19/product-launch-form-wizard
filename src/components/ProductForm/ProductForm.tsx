@@ -98,11 +98,11 @@ const initialFormData: FormData = {
 };
 
 const FormSteps = [
-  '基础信息',
-  '图文信息',
-  '价格库存',
-  '服务与保障',
-  '其他信息',
+  'Basic Information',
+  'Images & Media',
+  'Pricing & Stock',
+  'Services & Guarantees',
+  'Additional Info',
 ];
 
 const ProductForm: React.FC = () => {
@@ -148,8 +148,8 @@ const ProductForm: React.FC = () => {
   const handleNextStep = () => {
     if (currentStep === 0 && !formData.basicInfo.productName) {
       toast({
-        title: "请填写必填信息",
-        description: "商品标题是必填项",
+        title: "Please fill in required information",
+        description: "Product title is required",
         variant: "destructive",
       });
       return;
@@ -161,16 +161,16 @@ const ProductForm: React.FC = () => {
 
   const handleSaveDraft = () => {
     toast({
-      title: "草稿已保存",
-      description: "您可以稍后继续编辑",
+      title: "Draft saved",
+      description: "You can continue editing later",
     });
   };
 
   const handleSubmit = () => {
     if (!formData.basicInfo.productName) {
       toast({
-        title: "请填写必填信息",
-        description: "商品标题是必填项",
+        title: "Please fill in required information",
+        description: "Product title is required",
         variant: "destructive",
       });
       setCurrentStep(0);
@@ -179,8 +179,8 @@ const ProductForm: React.FC = () => {
 
     if (formData.images.mainImages.length === 0) {
       toast({
-        title: "请上传商品图片",
-        description: "至少需要上传一张主图",
+        title: "Please upload product images",
+        description: "At least one main image is required",
         variant: "destructive",
       });
       setCurrentStep(1);
@@ -189,8 +189,8 @@ const ProductForm: React.FC = () => {
 
     if (formData.pricing.salePrice <= 0) {
       toast({
-        title: "请设置有效的价格",
-        description: "销售价格必须大于0",
+        title: "Please set a valid price",
+        description: "Sale price must be greater than 0",
         variant: "destructive",
       });
       setCurrentStep(2);
@@ -203,8 +203,8 @@ const ProductForm: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
-        title: "商品发布成功",
-        description: "您的商品已成功发布上架",
+        title: "Product published successfully",
+        description: "Your product has been listed successfully",
       });
       
       // Reset form or redirect
@@ -218,18 +218,18 @@ const ProductForm: React.FC = () => {
       case 0:
         return (
           <FormSection 
-            title="基础信息" 
+            title="Basic Information" 
             required={true}
-            completion={{ filled: formData.basicInfo.productName ? 1 : 0, total: 1, percentText: "填写率+0.7%" }}
+            completion={{ filled: formData.basicInfo.productName ? 1 : 0, total: 1, percentText: "Fill rate +0.7%" }}
           >
             <div className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="productName">
-                  <span className="text-red-500">*</span> 商品标题
+                  <span className="text-red-500">*</span> Product Title
                 </Label>
                 <Input
                   id="productName"
-                  placeholder="请输入15-50个字符"
+                  placeholder="Enter 15-50 characters"
                   maxLength={50}
                   value={formData.basicInfo.productName}
                   onChange={(e) => handleInputChange('basicInfo', 'productName', e.target.value)}
@@ -241,35 +241,35 @@ const ProductForm: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="category">品牌</Label>
+                  <Label htmlFor="brand">Brand</Label>
                   <Select
                     value={formData.basicInfo.brand}
                     onValueChange={(value) => handleInputChange('basicInfo', 'brand', value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="请选择" />
+                      <SelectValue placeholder="Please select" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="brand1">品牌1</SelectItem>
-                      <SelectItem value="brand2">品牌2</SelectItem>
-                      <SelectItem value="brand3">品牌3</SelectItem>
+                      <SelectItem value="brand1">Brand 1</SelectItem>
+                      <SelectItem value="brand2">Brand 2</SelectItem>
+                      <SelectItem value="brand3">Brand 3</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor="targetAudience">适用人群</Label>
+                  <Label htmlFor="targetAudience">Target Audience</Label>
                   <Select
                     value={formData.basicInfo.targetAudience}
                     onValueChange={(value) => handleInputChange('basicInfo', 'targetAudience', value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="请选择" />
+                      <SelectValue placeholder="Please select" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">通用</SelectItem>
-                      <SelectItem value="men">男士</SelectItem>
-                      <SelectItem value="women">女士</SelectItem>
-                      <SelectItem value="children">儿童</SelectItem>
+                      <SelectItem value="all">Universal</SelectItem>
+                      <SelectItem value="men">Men</SelectItem>
+                      <SelectItem value="women">Women</SelectItem>
+                      <SelectItem value="children">Children</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -277,35 +277,35 @@ const ProductForm: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="material">适合材料</Label>
+                  <Label htmlFor="material">Material</Label>
                   <Select
                     value={formData.basicInfo.material}
                     onValueChange={(value) => handleInputChange('basicInfo', 'material', value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="请选择" />
+                      <SelectValue placeholder="Please select" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="cotton">棉质</SelectItem>
-                      <SelectItem value="linen">亚麻</SelectItem>
-                      <SelectItem value="silk">丝绸</SelectItem>
-                      <SelectItem value="wool">羊毛</SelectItem>
+                      <SelectItem value="cotton">Cotton</SelectItem>
+                      <SelectItem value="linen">Linen</SelectItem>
+                      <SelectItem value="silk">Silk</SelectItem>
+                      <SelectItem value="wool">Wool</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor="style">款式</Label>
+                  <Label htmlFor="style">Style</Label>
                   <Select
                     value={formData.basicInfo.style}
                     onValueChange={(value) => handleInputChange('basicInfo', 'style', value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="请选择" />
+                      <SelectValue placeholder="Please select" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="casual">休闲</SelectItem>
-                      <SelectItem value="formal">正式</SelectItem>
-                      <SelectItem value="sport">运动</SelectItem>
+                      <SelectItem value="casual">Casual</SelectItem>
+                      <SelectItem value="formal">Formal</SelectItem>
+                      <SelectItem value="sport">Sports</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -313,53 +313,53 @@ const ProductForm: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="shape">特色</Label>
+                  <Label htmlFor="shape">Features</Label>
                   <Select
                     value={formData.basicInfo.shape}
                     onValueChange={(value) => handleInputChange('basicInfo', 'shape', value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="请选择" />
+                      <SelectValue placeholder="Please select" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="option1">选项1</SelectItem>
-                      <SelectItem value="option2">选项2</SelectItem>
-                      <SelectItem value="option3">选项3</SelectItem>
+                      <SelectItem value="option1">Option 1</SelectItem>
+                      <SelectItem value="option2">Option 2</SelectItem>
+                      <SelectItem value="option3">Option 3</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor="craftType">加工工艺</Label>
+                  <Label htmlFor="craftType">Manufacturing Process</Label>
                   <Select
                     value={formData.basicInfo.craftType}
                     onValueChange={(value) => handleInputChange('basicInfo', 'craftType', value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="请选择" />
+                      <SelectValue placeholder="Please select" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="manual">手工制作</SelectItem>
-                      <SelectItem value="machine">机器制作</SelectItem>
-                      <SelectItem value="custom">定制</SelectItem>
+                      <SelectItem value="manual">Handcrafted</SelectItem>
+                      <SelectItem value="machine">Machine-made</SelectItem>
+                      <SelectItem value="custom">Custom</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
 
               <div>
-                <Label htmlFor="packagingMaterial">包装材质</Label>
+                <Label htmlFor="packagingMaterial">Packaging Material</Label>
                 <Select
                   value={formData.basicInfo.packagingMaterial}
                   onValueChange={(value) => handleInputChange('basicInfo', 'packagingMaterial', value)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="请选择" />
+                    <SelectValue placeholder="Please select" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="paper">纸质</SelectItem>
-                    <SelectItem value="plastic">塑料</SelectItem>
-                    <SelectItem value="cloth">布料</SelectItem>
-                    <SelectItem value="wood">木质</SelectItem>
+                    <SelectItem value="paper">Paper</SelectItem>
+                    <SelectItem value="plastic">Plastic</SelectItem>
+                    <SelectItem value="cloth">Cloth</SelectItem>
+                    <SelectItem value="wood">Wood</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -371,13 +371,13 @@ const ProductForm: React.FC = () => {
         return (
           <>
             <FormSection 
-              title="图文信息" 
+              title="Images & Media" 
               required={true}
-              completion={{ filled: formData.images.mainImages.length > 0 ? 1 : 0, total: 1, percentText: "转化率+2%" }}
+              completion={{ filled: formData.images.mainImages.length > 0 ? 1 : 0, total: 1, percentText: "Conversion rate +2%" }}
             >
               <div className="space-y-8">
                 <ImageUploader 
-                  title="主图" 
+                  title="Main Images" 
                   required={true} 
                   maxImages={5} 
                   onChange={handleMainImagesChange}
@@ -385,7 +385,7 @@ const ProductForm: React.FC = () => {
                 
                 <div className="border-t pt-6">
                   <ImageUploader 
-                    title="详情辅助图" 
+                    title="Detail Images" 
                     required={false} 
                     maxImages={8} 
                     onChange={handleDetailImagesChange}
@@ -400,14 +400,14 @@ const ProductForm: React.FC = () => {
         return (
           <>
             <FormSection 
-              title="价格库存" 
+              title="Pricing & Stock" 
               required={true}
-              completion={{ filled: formData.pricing.salePrice > 0 ? 1 : 0, total: 1, percentText: "转化率+15%" }}
+              completion={{ filled: formData.pricing.salePrice > 0 ? 1 : 0, total: 1, percentText: "Conversion rate +15%" }}
             >
               <div className="space-y-6">
                 <div className="space-y-4">
                   <Label className="block mb-2">
-                    <span className="text-red-500">*</span> 发货模式
+                    <span className="text-red-500">*</span> Shipping Mode
                   </Label>
                   <RadioGroup 
                     value={formData.pricing.priceType}
@@ -416,25 +416,25 @@ const ProductForm: React.FC = () => {
                   >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="fixed" id="fixed" />
-                      <Label htmlFor="fixed">现货发货模式</Label>
+                      <Label htmlFor="fixed">Ready to Ship</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="range" id="range" />
-                      <Label htmlFor="range">预购及其他模式</Label>
+                      <Label htmlFor="range">Pre-order & Other Modes</Label>
                     </div>
                   </RadioGroup>
                   <div className="text-xs text-gray-500">
-                    注：常规货品请选择第一种模式，以确保发货及时。预定类商品、定制商品或其他需要延迟发货的商品请选择第二种模式。
+                    Note: Choose the first option for regular products to ensure timely shipping. Choose the second option for pre-orders, customized items, or other products that require delayed shipping.
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="originalPrice">
-                      <span className="text-red-500">*</span> 商品售价
+                      <span className="text-red-500">*</span> Product Price
                     </Label>
                     <div className="relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2">¥</span>
+                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2">$</span>
                       <Input
                         id="originalPrice"
                         type="number"
@@ -448,7 +448,7 @@ const ProductForm: React.FC = () => {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="stockQuantity">库存数量</Label>
+                    <Label htmlFor="stockQuantity">Stock Quantity</Label>
                     <Input
                       id="stockQuantity"
                       type="number"
@@ -470,14 +470,14 @@ const ProductForm: React.FC = () => {
                         handleInputChange('pricing', 'hasDiscount', checked === true);
                       }}
                     />
-                    <Label htmlFor="hasDiscount">显示划线价格</Label>
+                    <Label htmlFor="hasDiscount">Show Strikethrough Price</Label>
                   </div>
                   
                   {formData.pricing.hasDiscount && (
                     <div className="ml-6 mt-2">
-                      <Label htmlFor="originalPrice">划线价格</Label>
+                      <Label htmlFor="originalPrice">Original Price</Label>
                       <div className="relative w-1/2">
-                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2">¥</span>
+                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2">$</span>
                         <Input
                           id="originalPrice"
                           type="number"
@@ -501,26 +501,26 @@ const ProductForm: React.FC = () => {
         return (
           <>
             <FormSection 
-              title="服务与保障" 
+              title="Services & Guarantees" 
               required={true}
             >
               <div className="space-y-6">
                 <div>
                   <Label htmlFor="shippingMethod" className="block mb-2">
-                    <span className="text-red-500">*</span> 运费模板
+                    <span className="text-red-500">*</span> Shipping Template
                   </Label>
                   <Select
                     value={formData.shipping.shippingMethod}
                     onValueChange={(value) => handleInputChange('shipping', 'shippingMethod', value)}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="请选择" />
+                      <SelectValue placeholder="Please select" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="free">包邮</SelectItem>
-                      <SelectItem value="flat">统一运费</SelectItem>
-                      <SelectItem value="weight">按重量计费</SelectItem>
-                      <SelectItem value="quantity">按数量计费</SelectItem>
+                      <SelectItem value="free">Free Shipping</SelectItem>
+                      <SelectItem value="flat">Flat Rate</SelectItem>
+                      <SelectItem value="weight">Weight-based</SelectItem>
+                      <SelectItem value="quantity">Quantity-based</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -534,12 +534,12 @@ const ProductForm: React.FC = () => {
                         handleInputChange('shipping', 'afterSalesService', checked === true);
                       }}
                     />
-                    <Label htmlFor="afterSalesService">订单完成15天内售后保障</Label>
+                    <Label htmlFor="afterSalesService">15-day After-sale Protection</Label>
                   </div>
                 </div>
 
                 <div>
-                  <Label className="block mb-2">售后政策</Label>
+                  <Label className="block mb-2">Return Policy</Label>
                   <RadioGroup 
                     value={formData.shipping.returnsAllowed ? "accept" : "no"}
                     onValueChange={(value) => handleInputChange('shipping', 'returnsAllowed', value === "accept")}
@@ -547,34 +547,34 @@ const ProductForm: React.FC = () => {
                   >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="accept" id="accept-returns" />
-                      <Label htmlFor="accept-returns">7天无理由退换</Label>
+                      <Label htmlFor="accept-returns">7-day No-reason Returns</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="no" id="no-returns" />
-                      <Label htmlFor="no-returns">不支持</Label>
+                      <Label htmlFor="no-returns">Not Supported</Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div>
-                  <Label className="block mb-2">售后服务方式</Label>
+                  <Label className="block mb-2">After-sale Service Options</Label>
                   <RadioGroup 
                     value="exchange"
                     className="space-y-3"
                   >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="exchange" id="exchange" />
-                      <Label htmlFor="exchange">不支持</Label>
+                      <Label htmlFor="exchange">Not Supported</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="refund-and-exchange" id="refund-and-exchange" disabled />
-                      <Label htmlFor="refund-and-exchange">延长售后服务有效期</Label>
+                      <Label htmlFor="refund-and-exchange">Extended After-sales Service Period</Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div>
-                  <Label className="block mb-2">商品状态</Label>
+                  <Label className="block mb-2">Product Status</Label>
                   <RadioGroup 
                     value={formData.status}
                     onValueChange={(value) => handleInputChange('status', 'status', value)}
@@ -582,11 +582,11 @@ const ProductForm: React.FC = () => {
                   >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="active" id="active" />
-                      <Label htmlFor="active">上架</Label>
+                      <Label htmlFor="active">Active</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="inactive" id="inactive" />
-                      <Label htmlFor="inactive">下架</Label>
+                      <Label htmlFor="inactive">Inactive</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -598,24 +598,24 @@ const ProductForm: React.FC = () => {
       case 4:
         return (
           <>
-            <FormSection title="其他信息">
+            <FormSection title="Additional Information">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="description">商品描述</Label>
+                  <Label htmlFor="description">Product Description</Label>
                   <Textarea
                     id="description"
-                    placeholder="请详细描述您的商品特点、用途、适用场景等信息"
+                    placeholder="Please describe your product features, uses, and suitable scenarios in detail"
                     className="min-h-[150px]"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label>商品标签</Label>
+                  <Label>Product Tags</Label>
                   <Input
-                    placeholder="请输入标签，多个标签用逗号分隔"
+                    placeholder="Enter tags, separate multiple tags with commas"
                   />
                   <p className="text-xs text-gray-500">
-                    标签能提高商品被搜索到的几率，建议添加3-5个标签
+                    Tags improve the chances of your product being found in searches. We recommend adding 3-5 tags.
                   </p>
                 </div>
               </div>
@@ -629,11 +629,15 @@ const ProductForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-verdent-50 to-blue-50 pb-20">
       <div className="container max-w-4xl py-8">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold mb-2">商品发布</h1>
-          <p className="text-gray-500">请填写以下信息，完成商品上架</p>
+          <div className="flex items-center mb-3">
+            <h1 className="text-3xl font-bold text-verdent-700 mr-2">Verdent</h1>
+            <span className="text-xl text-verdent-600">Seller Center</span>
+          </div>
+          <h2 className="text-2xl font-semibold mb-2 text-gray-800">Product Listing</h2>
+          <p className="text-gray-600">Complete the form below to list your product</p>
         </div>
 
         <FormStepIndicator
