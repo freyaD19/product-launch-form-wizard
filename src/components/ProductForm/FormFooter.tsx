@@ -33,9 +33,8 @@ const FormFooter: React.FC<FormFooterProps> = ({
             variant="outline"
             onClick={onPrevious}
             disabled={isSubmitting}
-            className="border-verdent-300 hover:bg-verdent-50 hover:text-verdent-700"
           >
-            <span className="bg-gradient-to-r from-blue-500 to-verdent-500 bg-clip-text text-transparent">Previous</span>
+            上一步
           </Button>
         )}
       </div>
@@ -46,9 +45,8 @@ const FormFooter: React.FC<FormFooterProps> = ({
             variant="outline"
             onClick={onSave}
             disabled={isSubmitting}
-            className="border-verdent-300 hover:bg-verdent-50 hover:text-verdent-700"
           >
-            <span className="bg-gradient-to-r from-blue-500 to-verdent-500 bg-clip-text text-transparent">Save Draft</span>
+            保存草稿
           </Button>
         )}
         {!isLastStep ? (
@@ -56,18 +54,17 @@ const FormFooter: React.FC<FormFooterProps> = ({
             type="button"
             onClick={onNext}
             disabled={isSubmitting}
-            className="bg-gradient-to-r from-blue-500 to-verdent-500 hover:from-blue-600 hover:to-verdent-600 text-white"
           >
-            Next
+            下一步
           </Button>
         ) : (
           <Button
             type="button"
             onClick={onSubmit}
             disabled={isSubmitting}
-            className="bg-gradient-to-r from-blue-600 to-verdent-600 hover:from-blue-700 hover:to-verdent-700 text-white"
+            className="bg-blue-600 hover:bg-blue-700"
           >
-            {isSubmitting ? 'Publishing...' : 'Publish Product'}
+            {isSubmitting ? '提交中...' : '发布商品'}
           </Button>
         )}
       </div>

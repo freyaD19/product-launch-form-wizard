@@ -24,8 +24,8 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     
     if (images.length + e.target.files.length > maxImages) {
       toast({
-        title: "Upload limit exceeded",
-        description: `You can upload a maximum of ${maxImages} images`,
+        title: "上传数量超出限制",
+        description: `最多只能上传${maxImages}张图片`,
         variant: "destructive",
       });
       return;
@@ -85,7 +85,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
           <label 
             className={cn(
               "flex flex-col items-center justify-center w-32 h-32 border-2 border-dashed rounded-md cursor-pointer",
-              "hover:border-verdent-500 hover:bg-verdent-50 transition-colors"
+              "hover:border-blue-500 hover:bg-blue-50 transition-colors"
             )}
           >
             <input 
@@ -95,14 +95,14 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
               className="hidden"
               onChange={handleImageUpload}
             />
-            <Plus className="mb-1 text-verdent-400" />
-            <span className="text-xs text-gray-500">Upload Image</span>
+            <Plus className="mb-1 text-gray-400" />
+            <span className="text-xs text-gray-500">上传图片</span>
           </label>
         )}
       </div>
       
       <p className="text-xs text-gray-500">
-        {`Supports jpg, png, gif formats, maximum of ${maxImages} images, each image should not exceed 2MB`}
+        {`支持jpg、png、gif格式，最多${maxImages}张图片，单张大小不超过2MB`}
       </p>
     </div>
   );

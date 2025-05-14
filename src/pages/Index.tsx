@@ -1,14 +1,8 @@
 
 import ProductForm from "@/components/ProductForm/ProductForm";
-import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
-  return (
-    <>
-      <ProductForm />
-      <Toaster />
-    </>
-  );
+  return <ProductForm />;
 };
 
 export default Index;
