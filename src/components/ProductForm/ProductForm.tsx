@@ -13,49 +13,60 @@ import FormSection from './FormSection';
 import ImageUploader from './ImageUploader';
 import FormFooter from './FormFooter';
 
+// Fix type error by explicitly defining the types
+type BasicInfo = {
+  productName: string;
+  category: string;
+  brand: string;
+  targetAudience: string;
+  material: string;
+  style: string;
+  shape: string;
+  craftType: string;
+  packagingMaterial: string;
+};
+
+type Images = {
+  mainImages: string[];
+  detailImages: string[];
+};
+
+type Pricing = {
+  priceType: 'fixed' | 'range';
+  originalPrice: number;
+  salePrice: number;
+  hasDiscount: boolean;
+  stockQuantity: number;
+};
+
+type Specifications = {
+  options: Array<{
+    name: string;
+    values: string[];
+  }>;
+  variants: Array<{
+    combination: Record<string, string>;
+    price: number;
+    stock: number;
+    sku: string;
+  }>;
+};
+
+type Shipping = {
+  shippingMethod: string;
+  freeShipping: boolean;
+  returnsAllowed: boolean;
+  returnsWindow: number;
+  afterSalesService: boolean;
+  afterSalesOptions: string[];
+};
+
 type FormData = {
-  basicInfo: {
-    productName: string;
-    category: string;
-    brand: string;
-    targetAudience: string;
-    material: string;
-    style: string;
-    shape: string;
-    craftType: string;
-    packagingMaterial: string;
-  };
-  images: {
-    mainImages: string[];
-    detailImages: string[];
-  };
-  pricing: {
-    priceType: 'fixed' | 'range';
-    originalPrice: number;
-    salePrice: number;
-    hasDiscount: boolean;
-    stockQuantity: number;
-  };
-  specifications: {
-    options: Array<{
-      name: string;
-      values: string[];
-    }>;
-    variants: Array<{
-      combination: Record<string, string>;
-      price: number;
-      stock: number;
-      sku: string;
-    }>;
-  };
-  shipping: {
-    shippingMethod: string;
-    freeShipping: boolean;
-    returnsAllowed: boolean;
-    returnsWindow: number;
-    afterSalesService: boolean;
-    afterSalesOptions: string[];
-  };
+  basicInfo: BasicInfo;
+  images: Images;
+  pricing: Pricing;
+  specifications: Specifications;
+  shipping: Shipping;
   status: 'active' | 'inactive';
 };
 
@@ -110,11 +121,16 @@ const ProductForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (section: keyof FormData, field: string, value: any) => {
+  // Fix the type error by passing correct section and field types
+  const handleInputChange = <K extends keyof FormData>(
+    section: K,
+    field: string,
+    value: any
+  ) => {
     setFormData({
       ...formData,
       [section]: {
-        ...formData[section as keyof FormData],
+        ...formData[section],
         [field]: value,
       },
     });
@@ -629,7 +645,8 @@ const ProductForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-verdent-50 to-blue-50 pb-20">
+    // Change from gradient background to white background
+    <div className="min-h-screen bg-white pb-20">
       <div className="container max-w-4xl py-8">
         <div className="mb-8">
           <div className="flex items-center mb-3">
