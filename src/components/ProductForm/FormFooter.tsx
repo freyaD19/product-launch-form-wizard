@@ -35,7 +35,7 @@ const FormFooter: React.FC<FormFooterProps> = ({
             disabled={isSubmitting}
             className="border-verdent-300 hover:bg-verdent-50 hover:text-verdent-700"
           >
-            Previous
+            <span className="bg-gradient-to-r from-blue-500 to-verdent-500 bg-clip-text text-transparent">Previous</span>
           </Button>
         )}
       </div>
@@ -48,7 +48,7 @@ const FormFooter: React.FC<FormFooterProps> = ({
             disabled={isSubmitting}
             className="border-verdent-300 hover:bg-verdent-50 hover:text-verdent-700"
           >
-            Save Draft
+            <span className="bg-gradient-to-r from-blue-500 to-verdent-500 bg-clip-text text-transparent">Save Draft</span>
           </Button>
         )}
         {!isLastStep ? (
@@ -56,7 +56,7 @@ const FormFooter: React.FC<FormFooterProps> = ({
             type="button"
             onClick={onNext}
             disabled={isSubmitting}
-            className="bg-verdent-500 hover:bg-verdent-600 text-white"
+            className="bg-gradient-to-r from-blue-500 to-verdent-500 hover:from-blue-600 hover:to-verdent-600 text-white"
           >
             Next
           </Button>
@@ -65,7 +65,7 @@ const FormFooter: React.FC<FormFooterProps> = ({
             type="button"
             onClick={onSubmit}
             disabled={isSubmitting}
-            className="bg-verdent-600 hover:bg-verdent-700 text-white"
+            className="bg-gradient-to-r from-blue-600 to-verdent-600 hover:from-blue-700 hover:to-verdent-700 text-white"
           >
             {isSubmitting ? 'Publishing...' : 'Publish Product'}
           </Button>

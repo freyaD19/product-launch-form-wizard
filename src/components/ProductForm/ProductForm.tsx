@@ -121,7 +121,7 @@ const ProductForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Fix the type error by passing correct section and field types
+  // Fixed type error by correctly typing the generic function
   const handleInputChange = <K extends keyof FormData>(
     section: K,
     field: string,
@@ -130,7 +130,7 @@ const ProductForm: React.FC = () => {
     setFormData({
       ...formData,
       [section]: {
-        ...formData[section],
+        ...(formData[section] as any),
         [field]: value,
       },
     });
@@ -645,15 +645,15 @@ const ProductForm: React.FC = () => {
   };
 
   return (
-    // Change from gradient background to white background
+    // White background
     <div className="min-h-screen bg-white pb-20">
       <div className="container max-w-4xl py-8">
         <div className="mb-8">
           <div className="flex items-center mb-3">
-            <h1 className="text-3xl font-bold text-verdent-700 mr-2">Verdent</h1>
-            <span className="text-xl text-verdent-600">Seller Center</span>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-verdent-500 bg-clip-text text-transparent mr-2">Verdent</h1>
+            <span className="text-xl bg-gradient-to-r from-verdent-500 to-verdent-600 bg-clip-text text-transparent">Seller Center</span>
           </div>
-          <h2 className="text-2xl font-semibold mb-2 text-gray-800">Product Listing</h2>
+          <h2 className="text-2xl font-semibold mb-2 bg-gradient-to-r from-blue-500 to-verdent-500 bg-clip-text text-transparent">Product Listing</h2>
           <p className="text-gray-600">Complete the form below to list your product</p>
         </div>
 

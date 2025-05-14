@@ -27,7 +27,7 @@ const FormStepIndicator: React.FC<FormStepIndicatorProps> = ({
               className={cn(
                 "w-full text-center pb-2 text-sm font-medium border-b-2 transition-all",
                 index === currentStep 
-                  ? "border-verdent-500 text-verdent-600" 
+                  ? "border-verdent-500 bg-gradient-to-r from-blue-600 to-verdent-600 bg-clip-text text-transparent" 
                   : "border-transparent text-gray-500 hover:text-gray-700"
               )}
             >
